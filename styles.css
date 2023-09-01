@@ -1,0 +1,177 @@
+/* ************** Font ************** */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,800&display=swap');
+
+/* ************** Variables ************** */
+:root {
+    --clr-primary-1: hsl(259, 100%, 65%);
+    --clr-primary-2: hsl(0, 100%, 67%);
+
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-off-white: hsl(0, 0%, 94%);
+    --clr-light-grey: hsl(0, 0%, 86%);
+    --clr-smokey-grey: hsl(0, 1%, 44%);
+    --clr-off-black: hsl(0, 0%, 8%);
+
+    --transition: all .4s ease-in-out;
+}
+
+/* ************** Global Style ************** */
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-family: 'Poppins', sans-serif;
+    background: var(--clr-off-white);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+:active,
+:focus {
+    outline: none;
+}
+.main-section {
+    background: var(--clr-white);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 10px 10px 120px 10px;
+    padding: 2.35rem;
+    width: 90vw;
+}
+
+/* ************** Birthday Form ************** */
+.birthday {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--clr-light-grey);
+    position: relative;
+}
+.birthday label {
+    color: var(--clr-smokey-grey);
+    font-size: 17px;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+.form-control .error {
+    color: var(--clr-primary-2);
+}
+.form-control .input {
+    padding: .875rem ;
+    border-radius: 5px;
+    border: 1px solid var(--clr-smokey-grey);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 27px;
+    width: 100%;
+    transition: var(--transition);
+}
+.form-control .input.input-error {
+    border: 1px solid var(--clr-primary-2);
+}
+.form-control .error-msg {
+    color: var(--clr-primary-2);
+    transition: var(--transition);
+    height: 4px;
+    font-size: 13.5px;
+}
+.form-control .input::placeholder {
+    color: var(--clr-smokey-grey);
+}
+.birthday .submit-btn {
+    background: var(--clr-primary-1);
+    border-radius: 50%;
+    transition: var(--transition);
+    padding: 1rem 1.2rem;
+    position: absolute;
+    bottom: -30%;
+    right: 0;
+    border: none;
+}
+.birthday .submit-btn:hover {
+    background: #000;
+}
+
+/* *************** Age ************** */
+.age {
+    padding-top: 3rem;
+}
+.age .age-unit {
+    font-weight: 800;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+.age-unit .years,
+.age-unit .months,
+.age-unit .days {
+    color: var(--clr-primary-1);
+    letter-spacing: 6px;
+}
+
+/* *************** Responsive ************** */
+@media screen and (min-width: 992px) {
+    .main-section {
+        width: 60vw;
+    }
+}
+@media screen and (max-width: 764px) {
+    .birthday {
+        padding-bottom: 3.75rem;
+        gap: 15px;
+    }
+    .birthday label {
+        font-size: 14px;
+    }
+    .form-control .error-msg {
+        font-size: 10px;
+    }
+    .form-control .input {
+        font-size: 21px;
+    }
+    .birthday .submit-btn {
+        right: 50%;
+        bottom: -25%;
+        transform: translateX(50%);
+        padding: .685rem .875rem;
+    }
+    .age {
+        padding-top: 4rem;
+    }
+}
+@media screen and (min-width: 764px) {
+    .form-control {
+        width: 10rem;
+    }
+}
+@media screen and (max-width: 432px) {
+    .age .age-unit {
+        font-size: 2.35rem;
+    }
+}

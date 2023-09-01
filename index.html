@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon Image -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Frontend Mentor | Age calculator app</title>
+  </head>
+  <body>
+    <section class="main-section">
+      <!-- Birthday Form -->
+      <form class="birthday">
+        <!-- Day Input -->
+        <div class="form-control">
+          <label for="day">day</label>
+          <input class="input" type="number" id="day" placeholder="dd" />
+          <p class="error-msg"></p>
+        </div>
+
+        <!-- Month Input -->
+        <div class="form-control">
+          <label for="month">month</label>
+          <input class="input" type="number" id="month" placeholder="mm" />
+          <p class="error-msg"></p>
+        </div>
+
+        <!-- Year Input -->
+        <div class="form-control">
+          <label for="year">year</label>
+          <input class="input" type="number" id="year" placeholder="yyyy" />
+          <p class="error-msg"></p>
+        </div>
+
+        <!-- Submit Icon -->
+        <button type="submit" class="submit-btn">
+          <img src="images/icon-arrow.svg" alt="Submit Icon" />
+        </button>
+      </form>
+
+      <!-- Age -->
+      <section class="age">
+        <!-- Years -->
+        <div class="box">
+          <p class="age-unit"><span class="years">--</span>years</p>
+        </div>
+
+        <!-- Months -->
+        <div class="box">
+          <p class="age-unit"><span class="months">--</span>months</p>
+        </div>
+
+        <!-- Days -->
+        <div class="box">
+          <p class="age-unit"><span class="days">--</span>days</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+  </body>
+</html>
