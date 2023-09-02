@@ -1,2 +1,2 @@
 # Age-calculator-app
-HTML CSS JavaScript Projrct
+- HTML CSS JavaScript Project
