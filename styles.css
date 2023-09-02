@@ -1,5 +1,5 @@
 /* ************** Font ************** */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,400;1,800&family=Roboto:ital,wght@1,900&display=swap');
 
 /* ************** Variables ************** */
 :root {
@@ -68,7 +68,7 @@ input[type=number] {
 .birthday {
     display: flex;
     gap: 20px;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
     border-bottom: 1px solid var(--clr-light-grey);
     position: relative;
 }
@@ -91,6 +91,10 @@ input[type=number] {
     font-size: 27px;
     width: 100%;
     transition: var(--transition);
+}
+.form-control .input:hover {
+    border: 1px solid var(--clr-primary-1);
+    caret-color: var(--clr-primary-1);
 }
 .form-control .input.input-error {
     border: 1px solid var(--clr-primary-2);
@@ -123,8 +127,8 @@ input[type=number] {
     padding-top: 3rem;
 }
 .age .age-unit {
-    font-weight: 800;
-    font-size: 3.5rem;
+    font-weight: 900;
+    font-size: 3.75rem;
     letter-spacing: 1px;
     font-style: italic;
 }
@@ -136,14 +140,19 @@ input[type=number] {
 }
 
 /* *************** Responsive ************** */
+@media screen and (min-width: 764px) {
+    .main-section {
+        width: 80vw;
+    }
+}
 @media screen and (min-width: 992px) {
     .main-section {
-        width: 60vw;
+        width: 50vw;
     }
 }
 @media screen and (max-width: 764px) {
     .birthday {
-        padding-bottom: 3.75rem;
+        padding-bottom: 3.85rem;
         gap: 15px;
     }
     .birthday label {
@@ -167,11 +176,14 @@ input[type=number] {
 }
 @media screen and (min-width: 764px) {
     .form-control {
-        width: 10rem;
+        width: 8rem;
     }
 }
 @media screen and (max-width: 432px) {
     .age .age-unit {
         font-size: 2.35rem;
+    }
+    .main-section {
+        padding: 1.65rem;
     }
 }
