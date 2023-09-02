@@ -103,7 +103,7 @@ input[type=number] {
     color: var(--clr-primary-2);
     transition: var(--transition);
     height: 4px;
-    font-size: 13.5px;
+    font-size: 11.5px;
 }
 .form-control .input::placeholder {
     color: var(--clr-smokey-grey);
@@ -144,6 +144,9 @@ input[type=number] {
     .main-section {
         width: 80vw;
     }
+    .form-control {
+        width: 8rem;
+    }
 }
 @media screen and (min-width: 992px) {
     .main-section {
@@ -158,9 +161,6 @@ input[type=number] {
     .birthday label {
         font-size: 14px;
     }
-    .form-control .error-msg {
-        font-size: 10px;
-    }
     .form-control .input {
         font-size: 21px;
     }
@@ -174,16 +174,14 @@ input[type=number] {
         padding-top: 4rem;
     }
 }
-@media screen and (min-width: 764px) {
-    .form-control {
-        width: 8rem;
-    }
-}
-@media screen and (max-width: 432px) {
+@media screen and (max-width: 478px) {
     .age .age-unit {
         font-size: 2.35rem;
     }
     .main-section {
         padding: 1.65rem;
+    }
+    .form-control .error-msg {
+        font-size: 8.45px;
     }
 }
