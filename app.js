@@ -1,27 +1,33 @@
+// ************** SELECT ELEMENTS ****************
 const form = document.querySelector(".birthday");
 
 const year = document.getElementById("year");
 const month = document.getElementById("month");
 const day = document.getElementById("day");
 
-const ageDay = document.querySelector(".days");
-const ageMonth = document.querySelector(".months");
-const ageYear = document.querySelector(".years");
+const outputDay = document.querySelector(".days");
+const outputMonth = document.querySelector(".months");
+const outputYear = document.querySelector(".years");
 
+
+// ************** EVENT LISTENER ****************
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+
 
     const validDay = (day.value <= 31 && day.value > 0);
     const validMonth = (month.value <= 12 && month.value > 0);
     const validYear = (year.value <= new Date().getFullYear() && year.value >= 1900);
-    const is31day = (month.value % 2 === 0 && day.value > 30)
+    const is31day = ((month.value < 8 && month.value % 2 === 0 && day.value > 30) || (month.value >= 8 && month.value % 2 === 1 && day.value > 30));
+    const validFebDay = (month.value === '2' && day.value > 29);
+    const isLeap = (!leapYear(Number(year.value)) && day.value > 28)
+    // console.log(is31day);
     
     let flag = 0;
 
-    if (!validYear || !validMonth || !validDay || is31day) {
+    if (!validYear || !validMonth || !validDay || is31day || validFebDay || isLeap) {
         flag = 1;
     }
-
     // check if the day is valid
     let d, m, y;
     if (day.value === "") {
@@ -33,9 +39,9 @@ form.addEventListener('submit', (e) => {
                 displayError(day, "");
             }
 
-            (is31day) ? 
+            (is31day || validFebDay || isLeap) ? 
             displayError(day, "Must be a valid day") 
-            : d = day.value;
+            : d = Number(day.value);
         } else {
             displayError(day, "Must be a valid day");
         }
@@ -50,7 +56,7 @@ form.addEventListener('submit', (e) => {
             if (flag) {
                 displayError(month, "");
             }
-            m = month.value;
+            m = Number(month.value);
         }
         else {
             displayError(month, "Must be a valid month");
@@ -66,7 +72,7 @@ form.addEventListener('submit', (e) => {
             if (flag) {
                 displayError(year, "");
             }
-            y = year.value;
+            y = Number(year.value);
         } else {
             displayError(year, "Must be a valid year");
         }
@@ -85,6 +91,7 @@ form.addEventListener('submit', (e) => {
     }
 });
 
+// ************** FUNCTIONS ****************
 // Display Error 
 function displayError(element, msg) {
     element.classList.add("input-error");
@@ -101,20 +108,49 @@ function backToDefault(element) {
 
 // display the age
 function displayAge(d, m, y) {
-    const date = new Date();
+    const todayDate = new Date();
+  
+    let tempYear = todayDate.getFullYear();
+    let tempMonth = todayDate.getMonth() + 1;
+    let tempDate = todayDate.getDate();
 
-    const birthday = new Date(y, m - 1, d);
-    let age = date.getTime() - birthday.getTime();
+     
+    let yy = tempYear - y
+    let mm = tempMonth - m;
+    let dd = tempDate - d;
 
-    let oneYear = 1000 * 60 * 60 * 24 * 365.2425;
-    let oneMonth = 1000 * 60 * 60 * 24 * 30.4167;
-    let oneDay = 1000 * 60 * 60 * 24;
+    let prevMonth = tempMonth - 1;
+
+    if (dd < 0) {
+        mm--
+        if ((prevMonth) === 2) {
+            if (leapYear(y)) {
+                dd = 29 - d + tempDate;
+            } else {
+                dd = 28 - d + tempDate;
+            }
+        } else if(((prevMonth) < 8 && (prevMonth) % 2 === 1) || ((prevMonth) >= 8 && (prevMonth) % 2 === 0)) {
+            dd = 31 - d + tempDate;
+        }
+        else {
+            dd = 30 - d + tempDate;
+        }
+    }
+    if (mm < 0) {
+        yy--;
+        mm += 12;
+    }
     
-    let yy = Math.floor(age / oneYear);
-    let mm = Math.floor((age % oneYear) / oneMonth);
-    let dd = Math.floor(((age % oneYear) % oneMonth) / oneDay);
-    
-    ageDay.innerHTML = `${dd}`;
-    ageMonth.innerHTML = `${mm}`;
-    ageYear.innerHTML = `${yy}`;
+    outputDay.innerHTML = `${dd}`;
+    outputMonth.innerHTML = `${mm}`;
+    outputYear.innerHTML = `${yy}`;
 }
+
+function leapYear(year) {
+    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
+
+
+
+
+
