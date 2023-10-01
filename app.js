@@ -119,7 +119,8 @@ function displayAge(d, m, y) {
     let mm = tempMonth - m;
     let dd = tempDate - d;
 
-    let prevMonth = tempMonth - 1;
+    let prevMonth;
+   (tempMonth == 1) ? prevMonth = 12 : prevMonth = tempMonth - 1;
 
     if (dd < 0) {
         mm--
